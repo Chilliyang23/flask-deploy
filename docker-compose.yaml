@@ -1,0 +1,44 @@
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flask-app
+    ports: 
+      - "8080:8080"
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.2
+    container_name: cadvisor
+    ports:
+      - "8081:8080"
+    volumes:
+      - /:/rootfs:ro # the root file system of the host
+      - /var/run:/var/run:rw # Docker runtime socket & processes
+      - /sys:/sys:ro # Kernel/system stats (CPU, memory, blkio, network)
+      - /var/lib/docker/:/var/lib/docker:ro  # Container metadata (layer sizes, images, mounts)
+    restart: unless-stopped
+
+  prometheus: 
+    image: prom/prometheus:v2.54.1
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:11.2.0
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  grafana-data:
+
