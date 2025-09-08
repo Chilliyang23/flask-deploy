@@ -26,7 +26,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose the port the app runs on
-EXPOSE 8080
+EXPOSE 8081
 
 # Define environment variables for production (can be overridden at runtime)
 ENV HOST="0.0.0.0" PORT="8080" DEBUG="False"
@@ -37,4 +37,4 @@ CMD curl -f http://localhost:8080/health || exit 1
 
 # Run Gunicorn. This is the production command.
 # We use Gunicorn directly now, not the Flask dev server.
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "flask_app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8081", "flask_app:app"]
