@@ -1,4 +1,4 @@
-# 1. Required Providers (Good practice to define versions)
+# 1. Required Providers 
 terraform {
   required_providers {
     aws = {
