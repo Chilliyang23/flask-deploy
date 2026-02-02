@@ -1,0 +1,11 @@
+# This is a comment.
+
+# 1. Global Owners: Every PR requires approval from the lead tutor.
+* @Chilliyang23
+
+# 2. Folder-Specific Owners: Changes to Infrastructure only.
+# Only the infra leads can approve these.
+# /infra/ @infra-tutor @your-username
+
+# 3. File-Specific: Only the security lead can touch the GitHub Workflow files.
+# /.github/workflows/ @security-tutor
