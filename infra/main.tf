@@ -16,7 +16,7 @@ provider "aws" {
 # 3. A Single Simple Resource for Testing
 resource "aws_s3_bucket" "test_bucket" {
   # Change this to something unique to you!
-  bucket = "my-bootcamp-test" 
+  bucket = "my-bootcamp-test"
 
   tags = {
     Name        = "Test Bucket"
