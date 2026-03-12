@@ -43,7 +43,7 @@ jobs:
           # Note how we use the output from the 'login-ecr' step
           tags: |
             ${{ steps.login-ecr.outputs.registry }}/dev/flask-deploy:${{ github.sha }}
-            ${{ steps.login-ecr.outputs.registry }}/dev/flask-deploy:latest
+            ${{ steps.login-ecr.outputs.registry }}/dev/flask-deploy:${{ github.ref_name }}
           # This enables GHA caching for faster builds
           cache-from: type=gha
           cache-to: type=gha,mode=max
