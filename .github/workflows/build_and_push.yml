@@ -40,6 +40,8 @@ jobs:
         with:
           context: .
           push: true
+          # load to the local runner for Snyk to see
+          load: true
           # Note how we use the output from the 'login-ecr' step
           tags: |
             ${{ steps.login-ecr.outputs.registry }}/dev/flask-deploy:${{ github.sha }}
